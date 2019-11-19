@@ -17,6 +17,9 @@ class SecurityConfiguration(val userDetailService: CustomUserDetailService) : We
 
   override fun configure(http: HttpSecurity?) {
     http!!
+        .csrf().disable()
+        .headers().frameOptions().disable()
+        .and()
         .authorizeRequests()
         .antMatchers(
             "/swagger/**",
@@ -24,7 +27,8 @@ class SecurityConfiguration(val userDetailService: CustomUserDetailService) : We
             "/swagger-resources/**",
             "/swagger-ui.html",
             "/webjars/**",
-            "/swagger/**"
+            "/swagger/**",
+            "/h2-console/*"
         ).hasRole("ADMIN")
         .anyRequest().authenticated()
         .and().formLogin()
