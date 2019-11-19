@@ -1,2 +1,5 @@
-# lw-lecture-asgmt-for-c
-Server to distribute assignment to students
+# Purpose of this server project
+
+This server is a server for distributing assignments to students 
+who take my lectures in the second semester of 2019 at Dongguk University.
+
