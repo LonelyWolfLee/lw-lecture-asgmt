@@ -8,12 +8,103 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<div class="container-fluid">
+<div class="container">
     <div class="alert alert-success" role="alert">
-        <a href="/logout" class="btn btn-success btn-sm" role="button" aria-pressed="true">Logout</a> 안녕하세요 <span
-            th:text="${username}"></span> 님
+        <a href="/logout" class="btn btn-success btn-sm" role="button" aria-pressed="true">Logout</a>
+        안녕하세요 <span class="text-primary" th:text="${username}"></span> 님
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-success">
+                <div class="card-header">과제3 목표</div>
+                <div class="card-body text-success">
+                    <h3 class="card-title">이미지 픽셀을 조작해보자</h3>
+                    <h5 class="card-text" th:text="${assignment}"></h5>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <br/><br/>
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">목표</th>
+                    <th scope="col">설명</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">이미지 소스</th>
+                    <td th:switch="${data.image}">
+                        <p>Pixel 당 1 byte(0~255) 인 512 x 512 이미지 </p>
+                        <a href="http://lonelywolf.pro/img/dongguk/lena_gray_512.raw" th:case="1">Download lena image
+                            file</a>
+                        <a href="http://lonelywolf.pro/img/dongguk/barbara_gray_512.raw" th:case="2">Download barbara
+                            image file</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">이미지 처리 방법</th>
+                    <td th:switch="${data.processing}">
+                        <div th:case="1">
+                            <img src="http://lonelywolf.pro/img/dongguk/processing1.png" alt="processing 1">
+                        </div>
+                        <div th:case="2">
+                            <img src="http://lonelywolf.pro/img/dongguk/processing2.png" alt="processing 2">
+                        </div>
+                        <div th:case="3">
+                            <img src="http://lonelywolf.pro/img/dongguk/processing3.png" alt="processing 3">
+                        </div>
+                        <div th:case="4">
+                            <img src="http://lonelywolf.pro/img/dongguk/processing4.png" alt="processing 4">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">학번 정보 삽입 줄</th>
+                    <td><span th:text="${data.markLine}"></span> 번째 줄 (범위 = 1 ~ 512)</td>
+                </tr>
+                <tr>
+                    <th scope="row">학번 정보 삽입 위치</th>
+                    <td th:switch="${data.markPos}">
+                        <div th:case="1">
+                            <img src="http://lonelywolf.pro/img/dongguk/markPos1.png" alt="mark pos 1">
+                        </div>
+                        <div th:case="2">
+                            <img src="http://lonelywolf.pro/img/dongguk/markPos2.png" alt="mark pos 2">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">학번 정보 삽입 시기</th>
+                    <td th:switch="${data.markOrder}">
+                        <div th:case="1">
+                            <p>이미치 처리를 하기 전</p>
+                        </div>
+                        <div th:case="2">
+                            <p>이미치 처리를 한 후</p>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
     </div>
 
 </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 </html>

@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
-import org.springframework.web.bind.annotation.*
 import javax.persistence.*
 
 @Service
@@ -27,21 +26,6 @@ class CustomUserDetailService(val userInfoRepository: UserInfoRepository) : User
       if (userInfo != null) User(username, Crypt.passwordEncoder.encode(userInfo.password), setOf(SimpleGrantedAuthority("ROLE_USER")))
       else throw UsernameNotFoundException("No username for $username")
     }
-  }
-}
-
-@RestController
-@RequestMapping("/users")
-class UserInfoController(val userInfoRepository: UserInfoRepository) {
-
-  @GetMapping("all")
-  fun showAll(): List<UserInfo> {
-    return userInfoRepository.findAll()
-  }
-
-  @PostMapping("all")
-  fun postAll(@RequestBody users: List<UserInfo>): List<UserInfo> {
-    return userInfoRepository.saveAll(users)
   }
 }
 
