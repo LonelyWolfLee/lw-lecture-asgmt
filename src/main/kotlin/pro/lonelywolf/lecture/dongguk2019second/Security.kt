@@ -27,9 +27,7 @@ class SecurityConfiguration(val userDetailService: CustomUserDetailService) : We
             "/swagger-resources/**",
             "/swagger-ui.html",
             "/webjars/**",
-            "/swagger/**",
-            "/h2-console/*",
-            "/users/*"
+            "/swagger/**"
         ).hasRole("ADMIN")
         .anyRequest().authenticated()
         .and().formLogin()

@@ -5,7 +5,6 @@ plugins {
   id("io.spring.dependency-management") version "1.0.8.RELEASE"
   kotlin("jvm") version "1.3.50"
   kotlin("plugin.spring") version "1.3.50"
-  kotlin("plugin.jpa") version "1.3.50"
 }
 
 group = "pro.lonelywolf.lecture"
@@ -27,14 +26,12 @@ dependencies {
   implementation("org.springframework.boot:spring-boot-starter-security")
   implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
   implementation("org.springframework.boot:spring-boot-starter-web")
-  implementation("org.springframework.boot:spring-boot-starter-data-jpa")
   implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
   implementation("org.jetbrains.kotlin:kotlin-reflect")
   implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
   implementation("org.springframework.session:spring-session-core")
   implementation("io.springfox:springfox-swagger2:2.9.2")
   implementation("io.springfox:springfox-swagger-ui:2.9.2")
-  runtimeOnly("com.h2database:h2")
   developmentOnly("org.springframework.boot:spring-boot-devtools")
   testImplementation("org.springframework.boot:spring-boot-starter-test") {
     exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
