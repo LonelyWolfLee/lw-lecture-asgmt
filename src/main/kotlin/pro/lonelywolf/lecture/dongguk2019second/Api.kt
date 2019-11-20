@@ -3,7 +3,8 @@ package pro.lonelywolf.lecture.dongguk2019second
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
-import org.springframework.web.bind.annotation.*
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RequestMapping
 import kotlin.math.absoluteValue
 import kotlin.random.Random
 
@@ -52,18 +53,3 @@ data class Assignment(
     val markPos: Int,
     val markOrder: Int
 )
-
-@RestController
-@RequestMapping("/users")
-class UserInfoController(val userInfoRepository: UserInfoRepository) {
-
-  @GetMapping("all")
-  fun showAll(): List<UserInfo> {
-    return userInfoRepository.findAll()
-  }
-
-  @PostMapping("all")
-  fun postAll(@RequestBody users: List<UserInfo>): List<UserInfo> {
-    return userInfoRepository.saveAll(users)
-  }
-}
